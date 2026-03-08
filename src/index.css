@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+@theme {
+  --color-m-primary: #006B5E;
+  --color-m-on-primary: #FFFFFF;
+  --color-m-primary-container: #6FF7E1;
+  --color-m-on-primary-container: #00201B;
+
+  --color-m-secondary: #4A635D;
+  --color-m-on-secondary: #FFFFFF;
+  --color-m-secondary-container: #CCE8E0;
+  --color-m-on-secondary-container: #06201B;
+
+  --color-m-tertiary: #436278;
+  --color-m-on-tertiary: #FFFFFF;
+  --color-m-tertiary-container: #C8E6FF;
+  --color-m-on-tertiary-container: #001E30;
+
+  --color-m-surface: #F5FBF8;
+  --color-m-surface-dim: #D5DBD8;
+  --color-m-surface-bright: #F5FBF8;
+  --color-m-surface-container-lowest: #FFFFFF;
+  --color-m-surface-container-low: #EFF5F2;
+  --color-m-surface-container: #E9EFEC;
+  --color-m-surface-container-high: #E3EAE7;
+  --color-m-surface-container-highest: #DEE4E1;
+
+  --color-m-on-surface: #171D1B;
+  --color-m-on-surface-variant: #3F4946;
+  --color-m-outline: #6F7976;
+  --color-m-outline-variant: #BFC9C5;
+
+  --color-m-error: #BA1A1A;
+  --color-m-on-error: #FFFFFF;
+  --color-m-error-container: #FFDAD6;
+  --color-m-on-error-container: #410002;
+
+  --color-m-success: #006D3A;
+  --color-m-success-container: #8CF8AA;
+  --color-m-warning: #7B5800;
+  --color-m-warning-container: #FFDEA6;
+}
+
+@font-face {
+  font-family: 'Bahnschrift';
+  src: local('Bahnschrift'), local('DIN Alternate'), local('Century Gothic');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Bahnschrift', 'Century Gothic', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-m-surface);
+  color: var(--color-m-on-surface);
+}
+
+.material-symbols-rounded {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.material-symbols-rounded.filled {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+/* Background */
+.m-bg-gradient {
+  background: linear-gradient(160deg, #E0F2EF 0%, #C8E6E0 25%, #B2DFDB 50%, #C8E6E0 75%, #E0F7FA 100%);
+  background-size: 200% 200%;
+  animation: bgShift 20s ease-in-out infinite;
+  min-height: 100vh;
+  padding: 5px;
+}
+
+@media (min-width: 640px) {
+  .m-bg-gradient {
+    padding: 5px;
+  }
+}
+
+@keyframes bgShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Elevations */
+.m-elevation-1 {
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.07),
+    0 1px 2px rgba(0,0,0,0.05);
+}
+.m-elevation-2 {
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.08),
+    0 1px 3px rgba(0,0,0,0.06);
+}
+.m-elevation-3 {
+  box-shadow:
+    0 6px 16px rgba(0,0,0,0.08),
+    0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-check-pop {
+  animation: checkPop 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scrollbar */
+.m-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.m-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.m-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-m-outline-variant);
+  border-radius: 99px;
+}
+
+/* Touch */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Material styled input */
+.m-field {
+  width: 100%;
+  padding: 18px 18px 18px 54px;
+  border: 2px solid var(--color-m-outline-variant);
+  border-radius: 20px;
+  background: var(--color-m-surface-container-low);
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--color-m-on-surface);
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Large styled input for registration */
+.m-field-large {
+  width: 100%;
+  padding: 18px 22px 18px 64px;
+  border: 2px solid var(--color-m-outline-variant);
+  border-radius: 24px;
+  background: var(--color-m-surface-container-low);
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--color-m-on-surface);
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.m-field::placeholder,
+.m-field-large::placeholder {
+  color: var(--color-m-outline);
+  font-size: 15px;
+}
+
+.m-field:hover,
+.m-field-large:hover {
+  border-color: var(--color-m-outline);
+  background: var(--color-m-surface-container);
+}
+
+.m-field:focus,
+.m-field-large:focus {
+  border-color: var(--color-m-primary);
+  background: var(--color-m-surface-container-lowest);
+  box-shadow: 0 0 0 4px rgba(0, 107, 94, 0.15);
+}
+
+/* Number input arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+  height: 32px;
+}
+
+/* FAB button */
+.m-fab {
+  background: var(--color-m-primary);
+  color: var(--color-m-on-primary);
+  border: none;
+  border-radius: 24px;
+  padding: 20px 36px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.m-fab:hover {
+  box-shadow: 0 6px 20px rgba(0, 107, 94, 0.3);
+  transform: translateY(-2px);
+}
+
+.m-fab:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.m-fab:disabled {
+  background: var(--color-m-surface-container-highest);
+  color: var(--color-m-outline);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
